@@ -213,40 +213,22 @@ public class ShortestRootFinder {
 
     static ArrayList<Node> addNeighbors(Node[][] inputMap, int i, int j)
     {
-    	ArrayList<Node> neighbors =  new ArrayList<Node>();
-    	
-   			 if(j < COLS-1)
-   			 {
-   				    // neighbors.add(inputMap[i+1][j]);
-   				   neighbors.add(inputMap[i][(j+1)]);
-   				 
-   			 }
+    	ArrayList<Node> neighbors =  new ArrayList<Node>();    	
+
+    	if(i - 1 >= 0) {			
+			 neighbors.add(inputMap[i-1][(j)]);
+		}
+		if(j - 1 >= 0) {
+			neighbors.add(inputMap[i][(j-1)]);
+		}
+		if(i + 1 < ROWS) {
+			neighbors.add(inputMap[i+1][(j)]);
+		}
+		if(j + 1 < COLS) {
+			neighbors.add(inputMap[i][(j+1)]);
+		}
    			 
-   			if(j > 0)
-  			 {
-  				//neighbors.add(inputMap[i-1][j]);
-   				neighbors.add(inputMap[i][(j-1)]);
-  				 
-  			 }
-   			
-   			if(i < ROWS -1)
- 			 {
- 				 //neighbors.add(inputMap[i][j+1]);
-   				neighbors.add(inputMap[(i+1)][j]);
- 				 
- 			 }
-   			
-   			if(i > 0)
-			 {
-				//neighbors.add(inputMap[i][j-1]);
-   				neighbors.add(inputMap[(i-1)][j]);
-				 
-			 }
-   			 
-   			 return neighbors;
-   			
-   			 //inputMap[i][j].setNeighbors(neighbors);               
-           
+   		return neighbors;
    	  
     }
     
@@ -295,7 +277,7 @@ public class ShortestRootFinder {
              } 
              else 
              {
-                 return 1;
+                 return 0;
             	
              }
          }
